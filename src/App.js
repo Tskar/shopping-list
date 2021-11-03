@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>.list.</h1>
+        <h1>.list</h1>
       </header>
       <form>
         <input className="input-text-box" type = "text" placeholder = "item"/>
