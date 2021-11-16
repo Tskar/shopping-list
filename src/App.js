@@ -1,5 +1,15 @@
 import { useState } from 'react';
 import './App.css';
+import List from "./Components/List";
+import {library} from '@fortawesome/fontawesome-svg-core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faCheck} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faPlus);
+library.add(faTrash);
+library.add(faCheck);
 
 function App() {
 
@@ -41,7 +51,11 @@ function App() {
       <form>
         <input className = "input-text-box" type = "text" placeholder = "item" onChange={newItemHandler}/>
         <input className = "quantity-box" type = "number" placeholder = "1" min="1" onChange={itemQuantityHandler} />
-        <button className = "add-button" type = "submit" onClick={addItemHandler}/>
+        <button className = "add-button" type = "submit" onClick={addItemHandler}>
+          <i>
+            <FontAwesomeIcon className="faicons-plus" icon='plus' />
+          </i>
+        </button>     
         
         <div className="option-select">
           <select className="list-options">
@@ -51,6 +65,9 @@ function App() {
           </select>
         </div>
       </form>
+      <List listObjects={listObjects}
+            setListObjects={setListObjects}
+      />
     </div>
   );
 };

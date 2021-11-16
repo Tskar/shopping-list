@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 body {
@@ -12,20 +13,38 @@ body {
 form {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
+
+input {
+  padding: 0.5rem;
+  min-height:1.5rem;
+  max-width: 22vh;
+  font-size: 1rem;
+  border: none;
+  color: #52352d;
+  background: rgb(255, 255, 255);
+}
+
+.input-text-box {
+  border-radius: 50px 0 0 50px;
+}
+
+.quantity-box {
+  margin: 0.2em;
+  max-width: 8vh;
+  padding: 0.5rem;
+}
+
 
 .add-button{
   border: none;
   background: none;
   position: relative;
   transition: transform .25s, opacity .25s;
-  opacity: .9;
+  opacity: .8;
   cursor: pointer;
   color: rgb(45, 46, 46);
-}
-
-.add-button:before {
-  content: "\002B";
 }
 
 .add-button:hover {
@@ -33,6 +52,65 @@ form {
   transform: rotate(45deg);
 }
 
+.option-select {
+  margin: 0.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.list-options {
+  min-height:2.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 12rem;
+  border: none;
+}
+
+.item-box {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.to-pick {
+  margin: 0.1rem;
+  background: none;
+  display: flex;
+  padding: 0.5em;
+  justify-content: space-between;
+
+}
+
+.item-to-pick {
+  margin: 0.1rem;
+  padding: 0rem 0.5rem;
+}
+
+.picked-button {
+  border: none;
+  background: none;
+  color: rgb(34, 33, 33);
+  cursor: pointer;
+  display: block;
+}
+
+.remove-button {
+  border: none;
+  background: none;
+  color: rgb(34, 33, 33);
+  cursor: pointer;
+}
+
+
+
+
+.list-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
 
 
 .App-header {
