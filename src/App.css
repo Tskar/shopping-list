@@ -2,6 +2,39 @@
   text-align: center;
 }
 
+body {
+  background: rgb(243, 217, 217);
+  justify-content: center;
+  align-items: center;
+  
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.add-button{
+  border: none;
+  background: none;
+  position: relative;
+  transition: transform .25s, opacity .25s;
+  opacity: .9;
+  cursor: pointer;
+  color: rgb(45, 46, 46);
+}
+
+.add-button:before {
+  content: "\002B";
+}
+
+.add-button:hover {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
