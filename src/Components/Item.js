@@ -2,16 +2,23 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-function Item({text, quantity, listObject, listObjects, setListObject}) {
+function Item({text, quantity, listObject, listObjects, setListObjects}) {
 
     //handle removed items
     const removeHandler = () => {
-
+        setListObjects(listObjects.filter((item) => item.id !== listObject.id));
     };
 
     //handle picked items
     const pickedHandler = () => {
-
+        setListObjects(listObjects.map((item) => {
+            if(item.id === listObject.id) {
+                return {
+                    ...item, picked: !item.picked
+                };
+            }
+            return item;
+        }));
     };
 
     return (
@@ -19,19 +26,19 @@ function Item({text, quantity, listObject, listObjects, setListObject}) {
             <li className={`item-to-pick ${listObject.picked ? "picked": ''}`}>
                 {quantity} {text}
             </li>
-            <button onClick={pickedHandler} className="picked-button">
+            <button className="picked-button" onClick={pickedHandler}>
                 <i>
                     <FontAwesomeIcon className="faicons-check" icon='check'/>
                 </i>
             </button>
-            <button onClick={removeHandler} className="remove-button">
+            <button className="remove-button" onClick={removeHandler}>
                 <i>
                     <FontAwesomeIcon className="faicons-trash" icon='trash'/>
                 </i>
             </button>
 
         </div>
-    )
-}
+    );
+};
 
 export default Item;

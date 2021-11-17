@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import List from "./Components/List";
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -7,6 +7,9 @@ import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
+//using button designs from fontAwesome
+//adding buttons to the library to be used
 library.add(faPlus);
 library.add(faTrash);
 library.add(faCheck);
@@ -17,6 +20,15 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [inputQuantity, setInputQuantity] = useState();
   const [listObjects, setListObjects] = useState([]);
+  const [status, setStatus] = useState("items");
+  const [editedList, setEditedList] = useState([]);
+
+
+  //useEffect to update everytime status is changed
+  useEffect (() => {
+    editedListHandler();
+  }, [listObjects, status]);
+
 
   //adress new item input
   const newItemHandler = (e) => {
@@ -42,6 +54,25 @@ function App() {
     setInputText("");
   };
 
+  //filter the list based on picked or not.
+  const editedListHandler = () => {
+    switch(status) {
+      case "picked":
+        setEditedList(listObjects.filter(listObject => listObject.picked === true));
+        break;
+      case "unpicked":
+        setEditedList(listObjects.filter(listObject => listObject.picked === false));
+        break;  
+      default:
+        setEditedList(listObjects);
+        break;
+    }
+  };
+
+  const statusHandler = (e) => {
+    console.log(e.target.value);
+    setStatus(e.target.value);
+  };
 
   return (
     <div className="App">
@@ -58,7 +89,7 @@ function App() {
         </button>     
         
         <div className="option-select">
-          <select className="list-options">
+          <select className="list-options" onChange={statusHandler}>
             <option value="items">items</option>
             <option value="picked">picked items</option>
             <option value="unpicked">unpicked items</option>
@@ -67,7 +98,8 @@ function App() {
       </form>
       <List listObjects={listObjects}
             setListObjects={setListObjects}
-      />
+            editedList={editedList}
+            />
     </div>
   );
 };

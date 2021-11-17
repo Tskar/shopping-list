@@ -22,7 +22,7 @@ input {
   max-width: 22vh;
   font-size: 1rem;
   border: none;
-  color: #52352d;
+  color: black;
   background: rgb(255, 255, 255);
 }
 
@@ -41,10 +41,11 @@ input {
   border: none;
   background: none;
   position: relative;
+  font-size: 1.5rem;
   transition: transform .25s, opacity .25s;
-  opacity: .8;
+  opacity: .5;
   cursor: pointer;
-  color: rgb(45, 46, 46);
+  color: rgb(0, 0, 0);
 }
 
 .add-button:hover {
@@ -79,7 +80,22 @@ input {
   display: flex;
   padding: 0.5em;
   justify-content: space-between;
+  transition: all 1s ease;
+}
 
+.to-pick {
+  animation: bottomIn 0.5s forwards;
+}
+
+@keyframes bottomIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .item-to-pick {
@@ -90,36 +106,25 @@ input {
 .picked-button {
   border: none;
   background: none;
-  color: rgb(34, 33, 33);
+  color: rgb(0, 0, 0);
   cursor: pointer;
   display: block;
+}
+
+.picked {
+  text-decoration: line-through;
+  opacity: .5;
 }
 
 .remove-button {
   border: none;
   background: none;
-  color: rgb(34, 33, 33);
+  color: rgb(0, 0, 0);
   cursor: pointer;
 }
-
-
-
 
 .list-options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-}
-
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
